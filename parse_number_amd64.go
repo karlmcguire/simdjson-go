@@ -21,7 +21,6 @@
 package simdjson
 
 import (
-	"fmt"
 	"math"
 	"strconv"
 )
@@ -92,8 +91,6 @@ func parseNumber(buf []byte) (tag Tag, val uint64) {
 
 	// Only try integers if we didn't find any float exclusive and it can fit in an integer.
 	if found&isFloatOnlyFlag == 0 && pos <= 20 {
-		fmt.Println("found ", string(buf[:pos]))
-
 		if found&isMinusFlag == 0 {
 			if pos > 1 && buf[0] == '0' {
 				// Integers cannot have a leading zero.
